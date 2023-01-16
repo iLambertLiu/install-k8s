@@ -1,0 +1,4 @@
+- name: install nfs-provisioner cp
+  copy: src=nfs-provisioner.sh dest=/tmp/nfs-provisioner.sh
+- name: install nfs-provisioner
+  shell: sh /tmp/nfs-provisioner.sh

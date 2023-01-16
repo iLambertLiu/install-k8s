@@ -1,0 +1,4 @@
+- name: master join cp
+  copy: src=master-join.sh dest=/tmp/master-join.sh
+- name: master join
+  shell: sh /tmp/master-join.sh

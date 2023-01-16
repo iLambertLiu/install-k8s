@@ -1,0 +1,6 @@
+- name: cp hosts
+  copy: src=hosts dest=/tmp/hosts
+- name: init cp
+  template: src=init.sh dest=/tmp/init.sh
+- name: init install
+  shell: sh /tmp/init.sh

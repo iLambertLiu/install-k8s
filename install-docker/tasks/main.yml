@@ -1,0 +1,4 @@
+- name: install docker cp
+  copy: src=install-docker.sh dest=/tmp/install-docker.sh
+- name: install docker
+  shell: sh /tmp/install-docker.sh

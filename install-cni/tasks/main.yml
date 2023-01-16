@@ -1,0 +1,4 @@
+- name: install cni flannel cp
+  copy: src=install-flannel.sh dest=/tmp/install-flannel.sh
+- name: install cni flannel
+  shell: sh /tmp/install-flannel.sh

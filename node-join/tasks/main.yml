@@ -1,0 +1,4 @@
+- name: node join cp
+  copy: src=node-join.yaml dest=/tmp/node-join.yaml
+- name: node join
+  shell: sh /tmp/node-join.yaml

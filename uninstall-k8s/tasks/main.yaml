@@ -1,0 +1,4 @@
+- name: uninstall k8s cp
+  copy: src=uninstall-k8s.sh dest=/tmp/uninstall-k8s.sh
+- name: uninstall k8s
+  shell: sh /tmp/uninstall-k8s.sh

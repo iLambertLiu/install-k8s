@@ -1,0 +1,4 @@
+- name: k8s master init cp
+  template: src=master-init.sh dest=/tmp/master-init.sh
+- name: k8s master init
+  shell: sh /tmp/master-init.sh

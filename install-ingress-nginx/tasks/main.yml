@@ -1,0 +1,6 @@
+- name: ingress-nginx deploy cp
+  copy: src=deploy.yaml dest=/tmp/deploy.yaml
+- name: install ingress-nginx cp
+  copy: src=ingress-nginx.sh dest=/tmp/ingress-nginx.sh
+- name: install ingress-nginx
+  shell: sh /tmp/ingress-nginx.sh

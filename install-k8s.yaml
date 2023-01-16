@@ -1,0 +1,36 @@
+- hosts: k8s
+  remote_user: root
+  roles:
+    - init
+- hosts: k8s
+  remote_user: root
+  roles:
+    - install-docker
+- hosts: k8s
+  remote_user: root
+  roles:
+    - install-k8s
+- hosts: master1
+  remote_user: root
+  roles:
+    - master-init
+- hosts: master1
+  remote_user: root
+  roles:
+    - install-cni
+- hosts: master2
+  remote_user: root
+  roles:
+    - master-join
+- hosts: node
+  remote_user: root
+  roles:
+    - node-join
+- hosts: master1
+  remote_user: root
+  roles:
+    - install-ingress-nginx
+- hosts: master1
+  remote_user: root
+  roles:
+    - install-nfs-provisioner
