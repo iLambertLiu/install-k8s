@@ -1,0 +1,4 @@
+- name: install k8s cp
+  template: src=install-k8s.sh dest=/tmp/install-k8s.sh
+- name: install k8s
+  shell: sh /tmp/install-k8s.sh
