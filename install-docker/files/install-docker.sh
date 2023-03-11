@@ -28,7 +28,7 @@ cat >/etc/docker/daemon.json<<EOF
 }
 EOF
 # 加载
-systemctl reload docker
+systemctl restart docker
 
 # 查看
 systemctl status docker containerd
