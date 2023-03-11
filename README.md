@@ -35,6 +35,24 @@ git clone https://gitee.com/hadoop-bigdata/install-k8s.git
 ### 4）修改配置
 
 修改节点信息，配置文件：`/etc/ansible/hosts`
+```bash
+[master1]
+192.168.182.110 hostname=local-168-182-110
+[master2]
+192.168.182.111 hostname=local-168-182-111
+192.168.182.112 hostname=local-168-182-112
+[node]
+192.168.182.113 hostname=local-168-182-113
+[k8s:children]
+master1
+master2
+node
+[k8s:vars]
+ansible_ssh_user=root
+ansible_ssh_pass=xxxxxx
+ansible_ssh_port=22
+k8s_version=1.23.6
+```
 ![输入图片说明](images/2image.png)
 
 修改`install-k8s/init/files/hosts`
