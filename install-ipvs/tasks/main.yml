@@ -1,0 +1,4 @@
+- name: install ipvs cp
+  copy: src=install-ipvs.sh dest=/tmp/install-ipvs.sh
+- name: install ipvs
+  shell: sh /tmp/install-ipvs.sh

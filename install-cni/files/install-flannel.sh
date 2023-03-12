@@ -5,7 +5,7 @@ kubectl taint nodes `hostname` node-role.kubernetes.io/master:NoSchedule- 2>/dev
 kubectl taint nodes `hostname` node.kubernetes.io/not-ready:NoSchedule- 2>/dev/null
 
 # For Kubernetes v1.17+
-kubectl apply -f https://raw.githubusercontent.com/flannel-io/flannel/v0.20.2/Documentation/kube-flannel.yml
+kubectl apply -f https://github.com/flannel-io/flannel/releases/latest/download/kube-flannel.yml
 
 # 查看
 kubectl get all -n kube-flannel

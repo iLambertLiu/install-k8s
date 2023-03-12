@@ -3,14 +3,40 @@
 # 获取master ip，假设都是第一个节点为master
 maser_ip=`head -1 /tmp/hosts |awk '{print $1}'`
 
+hostname=`hostname`
+
+echo "====================k8s node join=======================" | tee -a /tmp/k8s.log
+
+for i in `seq 3`
+do
+
 # 判断节点是否加入
-ssh $maser_ip "kubectl get nodes|grep -q `hostname`"
+ssh $maser_ip "kubectl get nodes|grep -q ${hostname}"
 if [ $? -eq 0 ];then
-	exit 0
+	break
 fi
+
+expect <<-EOF
+pawn kubeadm reset
+expect "*y/N*"
+send "y\n"
+expect eof
+
+EOF
+iptables -F && iptables -t nat -F && iptables -t mangle -F && iptables -X
 
 CERT_KEY=`ssh $maser_ip "kubeadm init phase upload-certs --upload-certs|tail -1"`
 
 join_str=`ssh $maser_ip kubeadm token create --print-join-command`
 
-$( echo $join_str " --certificate-key $CERT_KEY --v=5")
+$( echo $join_str " --certificate-key $CERT_KEY --v=5") | tee -a /tmp/k8s.log
+
+done
+
+# 如果初始化失败了，就异常退出
+ssh $maser_ip "kubectl get nodes|grep -q ${hostname}"
+if [ $? -ne 0 ];then
+   echo "k8s node join failed!!!";exit 1
+fi
+
+echo "====================k8s node join end=======================" | tee -a /tmp/k8s.log

@@ -1,0 +1,10 @@
+- name: keepalived config cp
+  template: src=keepalived-master.conf dest=/tmp/keepalived.conf
+  when: node=='master'
+- name: keepalived config cp
+  template: src=keepalived-backend.conf dest=/tmp/keepalived.conf
+  when: node=='backend'
+- name: install keepalived cp
+  template: src=install-keepalived.sh dest=/tmp/install-keepalived.sh
+- name: install keepalived install
+  shell: sh /tmp/install-keepalived.sh
