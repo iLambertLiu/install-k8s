@@ -1,9 +1,10 @@
 ## k8s 一键部署
-@[TOC]
+
 这里只是简单的讲解快速部署的步骤，细节讲解，可以参考我之前的文章：[【云原生】k8s 一键部署（ansible）](https://liugp.blog.csdn.net/article/details/128691906)
 
 ### 1）基于ansible 一键部署k8s流程图
-![输入图片说明](https://img-blog.csdnimg.cn/img_convert/bf9764e3d6d08ccb522170b3c1ab4f4f.png)
+![输入图片说明](https://gitee.com/hadoop-bigdata/install-k8s/raw/master/images/1image.png)
+
 ### 2）安装ansible
 ```bash
 yum -y install epel-release
@@ -69,8 +70,7 @@ harbor_domainname=myharbor.com
 harbor_secret_key=""
 harbor_secret_crt=""
 ```
-![在这里插入图片描述](https://img-blog.csdnimg.cn/6ae13e8e5f4f4e8caa9a27579f4eca5c.png)
-
+![输入图片说明](images/12.png)
 #### 2、修改 install-k8s/init/templates/hosts
 
 ```bash
@@ -82,10 +82,10 @@ harbor_secret_crt=""
 192.168.182.113 local-168-182-113
 {{ vip }} {{ endpoint }}
 ```
-![在这里插入图片描述](https://img-blog.csdnimg.cn/a1e8c998e86c4ace88eb077dc632aea9.png)
+![输入图片说明](images/23.png)
 ### 5）导镜像
 通过关注公众号【**大数据与云原生技术分享**】回复【`k8s`】即可获取k8s镜像包。也支持在线安装，但是建议是提前导入镜像，这样会节省大量安装时间。
-
+![输入图片说明](images/3wx.png)
 ### 5）执行部署
 ```bash
 # 可以加上-vvv显示更多信息
@@ -95,13 +95,13 @@ kubectl get pods -A
 kubectl top nodes
 kubectl top pods -A
 ```
-![在这里插入图片描述](https://img-blog.csdnimg.cn/0f728a2e4ba845778920ca735fd70aa2.png)
+![输入图片说明](images/55.png)
 
 ### 6）卸载
 ```bash
 ansible-playbook uninstall-k8s.yaml
 ```
-![在这里插入图片描述](https://img-blog.csdnimg.cn/eb7de7fd75e248e28e6275a2e28fc723.png)
+![输入图片说明](images/66.png)
 
 【温馨提示】
 
