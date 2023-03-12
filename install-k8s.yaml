@@ -39,3 +39,11 @@
   remote_user: root
   roles:
     - install-nfs-provisioner
+- hosts: master1
+  remote_user: root
+  roles:
+    - install-dashboard
+- hosts: master1
+  remote_user: root
+  roles:
+    - install-harbor

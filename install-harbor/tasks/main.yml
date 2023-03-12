@@ -1,0 +1,6 @@
+- name: harbor helm chart package cp
+  copy: src=harbor-1.11.1.tgz dest=/tmp/harbor-1.11.1.tgz
+- name: install harbor cp
+  template: src=install-harbor.sh dest=/tmp/install-harbor.sh
+- name: install harbor
+  shell: sh /tmp/install-harbor.sh

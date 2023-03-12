@@ -40,7 +40,7 @@ for line in `cat /tmp/hosts`
 do
     ip=`echo $line|awk '{print $1}'`
     master_ip=`head -1 /tmp/hosts|awk '{print $1}'`
-    if [ "$ip" != "$master_ip" ];then
+    if [ "$ip" != "$master_ip" and "$ip" != {{ vip }} ];then
        ssh $ip "yum -y install rpcbind nfs-utils"
        ssh $ip "systemctl enable --now rpcbind"
     fi

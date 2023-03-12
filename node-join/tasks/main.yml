@@ -1,4 +1,4 @@
 - name: node join cp
-  copy: src=node-join.yaml dest=/tmp/node-join.yaml
+  template: src=node-join.sh dest=/tmp/node-join.sh
 - name: node join
   shell: sh /tmp/node-join.yaml

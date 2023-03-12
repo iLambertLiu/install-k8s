@@ -1,0 +1,6 @@
+- name: dashboard.yaml config cp
+  copy: src=dashboard.yaml dest=/tmp/dashboard.yaml
+- name: install dashboard cp
+  copy: src=install-dashboard.sh dest=/tmp/install-dashboard.sh
+- name: install dashboard
+  shell: sh /tmp/install-dashboard.sh
